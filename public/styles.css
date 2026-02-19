@@ -1,0 +1,22 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; }
+body { margin:0; background:#0a1220; color:#edf2ff; }
+#app { max-width: 920px; margin: 0 auto; padding: 16px; }
+.screen { display:none; }
+.screen.active { display:block; }
+.card { background:#152238; border:1px solid #2a3d63; border-radius:12px; padding:12px; margin:8px 0; }
+label { display:block; margin:6px 0; }
+input, select, button { font-size:16px; padding:8px; border-radius:8px; border:1px solid #46608d; background:#0f1d33; color:#edf2ff; }
+button { cursor:pointer; margin:4px 6px 4px 0; }
+button.danger { background:#6e1f2b; }
+.row { display:flex; gap:8px; flex-wrap:wrap; }
+.hidden { display:none; }
+#participants { padding-left:18px; }
+.present { min-height: 70vh; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:12px; }
+#termDisplay { font-size: clamp(80px, 24vw, 220px); font-weight: 900; letter-spacing:2px; line-height:1; }
+#progress { font-size: clamp(18px, 5vw, 32px); color:#9fb7e8; }
+#presentInfo { color:#9fb7e8; }
+#scoreBoard table { width:100%; border-collapse: collapse; }
+#scoreBoard th, #scoreBoard td { border-bottom:1px solid #2a3d63; padding:8px; text-align:left; }
+@media (max-width: 600px) {
+  #app { padding: 10px; }
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1220" />
+  <title>テンポ見取算 同期チャレンジ</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main id="app">
+    <section id="homeScreen" class="screen active">
+      <h1>テンポ見取算（同期チャレンジ）</h1>
+      <div class="card">
+        <h2>ルーム作成（ホスト）</h2>
+        <label>ニックネーム <input id="hostName" maxlength="10" value="Host" /></label>
+        <label>tempo（秒/口）<input id="tempo" type="number" min="0.2" max="5" step="0.1" value="1.0" /></label>
+        <label>terms <select id="terms"><option>10</option><option>15</option><option selected>20</option><option>30</option></select></label>
+        <label>digits <select id="digits"><option>1</option><option selected>2</option><option>3</option></select></label>
+        <label>mode <select id="mode"><option value="add">加算のみ</option><option value="sub">減算のみ</option><option value="mixed" selected>加減混合</option></select></label>
+        <label><input id="allowNegative" type="checkbox" /> allowNegative（途中マイナス許可）</label>
+        <label>countdown <select id="countdown"><option>3</option><option selected>5</option><option>10</option></select></label>
+        <label><input id="beep" type="checkbox" checked /> beep</label>
+        <label>seed <input id="seed" maxlength="64" /></label>
+        <button id="generateSeedBtn">seed再生成</button>
+        <button id="createRoomBtn">ルームを作成</button>
+      </div>
+      <div class="card">
+        <h2>ルーム参加（ゲスト）</h2>
+        <label>ニックネーム <input id="guestName" maxlength="10" value="Guest" /></label>
+        <label>roomId <input id="joinRoomId" maxlength="12" /></label>
+        <button id="joinRoomBtn">参加する</button>
+      </div>
+    </section>
+
+    <section id="waitingScreen" class="screen">
+      <h2>待機中：開始を待っています</h2>
+      <p id="roomMeta"></p>
+      <p id="syncStatus"></p>
+      <div class="row">
+        <button id="copyLinkBtn">リンクコピー</button>
+        <button id="shareLinkBtn">共有</button>
+      </div>
+      <div id="hostControls" class="card hidden">
+        <h3>ホスト操作</h3>
+        <button id="initAudioBtn">ビープ準備</button>
+        <button id="startBtn">開始を確定</button>
+        <button id="rematchBtn">同じ設定で再戦</button>
+        <button id="closeRoomBtn" class="danger">ルーム終了</button>
+      </div>
+      <ul id="participants"></ul>
+      <p id="startCountdown"></p>
+    </section>
+
+    <section id="presentScreen" class="screen present">
+      <div id="progress"></div>
+      <div id="termDisplay">+0</div>
+      <p id="presentInfo"></p>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <h2>結果</h2>
+      <p id="resultSummary"></p>
+      <label>あなたの回答 <input id="answerInput" inputmode="numeric" /></label>
+      <button id="submitAnswerBtn">回答を送信</button>
+      <div id="scoreBoard"></div>
+      <button id="backWaitingBtn">待機画面へ戻る</button>
+    </section>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
